@@ -29,6 +29,27 @@ const GlitchChar = ({ char }: GlitchCharProps) => {
     return () => clearInterval(interval);
   }, [char, isHovered]);
 
+    // Effect for random glitch (even when not hovered)
+    useEffect(() => {
+      // Only trigger the random glitch occasionally (e.g., 1% chance)
+      const randomGlitchChance = 0.05; // 1% chance
+  
+      const randomGlitchInterval = setInterval(() => {
+        if (Math.random() < randomGlitchChance) {
+          setDisplayChar(String.fromCharCode(Math.floor(Math.random() * (126 - 32 + 1)) + 32));
+  
+          // Reset to the original character after a short delay
+          setTimeout(() => {
+            setDisplayChar(char);
+          }, 500); // Reset after 100ms
+        }
+      }, 1000); // Check every second
+  
+      return () => clearInterval(randomGlitchInterval);
+    }, [char]);
+
+  
+
   return (
     <span 
       className="inline-block cursor-pointer mx-[5px] hover:text-purple-600 transition-colors font-mono"
