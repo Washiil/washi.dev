@@ -37,7 +37,7 @@ const GlitchChar = ({ char }: GlitchCharProps) => {
         setTimeout(() => {
             setIsHovered(false);
             setDisplayChar(char);
-        }, 1250); // Continue effect for 2 seconds before stopping
+        }, Math.random() * 2500 + 500); // Continue effect for 2 seconds before stopping
       }}
     >
       {displayChar}
