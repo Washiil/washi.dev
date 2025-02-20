@@ -2,10 +2,12 @@
 import Link from "next/link";
 import React from "react";
 import GlitchText from "./components/GlitchedText";
+import WireButton from "./components/WireButton";
 
 const navigation = [
   { name: "Projects", href: "/projects" },
   { name: "Contact", href: "/contact" },
+  { name: "Blog", href: "/blog"}
 ];
 
 export default function Home() {
@@ -23,16 +25,11 @@ export default function Home() {
       <nav className="my-16 animate-fade-in">
         <ul className="flex items-center justify-center gap-4">
             {navigation.map((item) => (
-              <Link
-                key={item.href}
-                href={item.href}
-                className="text-sm duration-500 text-zinc-500 hover:text-zinc-300"
-              >
-                {item.name}
-              </Link>
+              <WireButton text={item.name}/>
             ))}
           </ul>
       </nav>
+
     </div>
   );
 }
