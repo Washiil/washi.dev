@@ -52,7 +52,7 @@ const GlitchChar = ({ char }: GlitchCharProps) => {
   return (
     <span 
       className={`inline-block cursor-pointer mx-[2px] transition-all font-mono 
-        ${isHovered ? 'text-purple-600 -translate-y-4' : 'text-white-100'}`}
+        ${isHovered ? 'text-purple-600 -translate-y-4 opacity-85' : 'text-white-100'}`}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => {
         setTimeout(() => {
