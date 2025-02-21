@@ -1,7 +1,8 @@
 // import Image from "next/image";
 import React from "react";
 import GlitchText from "./components/GlitchedText";
-import WireButton from "./components/WireButton";
+// import WireButton from "./components/WireButton";
+import Link from "next/link";
 
 const navigation = [
   { name: "Projects", href: "/projects" },
@@ -26,7 +27,7 @@ export default function Home() {
       <nav className="my-16 animate-fade-in">
         <ul className="flex items-center justify-center gap-4">
             {navigation.map((item) => (
-              <WireButton key={item.href} text={item.name}/>
+              <Link key={item.href} href={item.href} className="m-2 p-3 underline-offset-4 opacity-65 text-xl font-mono transition-all hover:text-purple-600 hover:scale-125 hover:-translate-y-2 hover:opacity-100 hover:underline">{item.name}</Link>
             ))}
           </ul>
       </nav>
