@@ -5,8 +5,8 @@ import GlitchText from './GlitchedText';
 
 export default function Navbar() {
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-black">
-      <div className="m-5 p-3 flex justify-between items-center">
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-gradient-to-b from-zinc-800 to-zinc-900/5">
+      <div className="m-5 p-3 flex flex-col md:flex-row justify-between items-center">
         {/* Left side: Logo/Text */}
         <Link href="/" className='text-4xl'>
           <GlitchText text='Washi.Dev'/>
