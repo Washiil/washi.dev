@@ -6,6 +6,12 @@ interface GlitchCharProps {
   char: string;
 }
 
+const possibleChars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz?></{}[]\\|+=@#$%^&".split('');
+
+const getRandomChar = () => {
+  return possibleChars[Math.floor(Math.random() * possibleChars.length)];
+}
+
 const GlitchChar = ({ char }: GlitchCharProps) => {
   const [displayChar, setDisplayChar] = useState(char);
   const [isHovered, setIsHovered] = useState(false);
@@ -16,49 +22,43 @@ const GlitchChar = ({ char }: GlitchCharProps) => {
       return;
     }
 
-    const randomCharCode = Math.floor(Math.random() * (126 - 32 + 1)) + 32;
-    setDisplayChar(String.fromCharCode(randomCharCode));
+    setDisplayChar(getRandomChar);
 
+    // Glitch effect while hovered
     const interval = setInterval(() => {
-      if (Math.random() > 0.5) {
-        const randomCharCode = Math.floor(Math.random() * (126 - 32 + 1)) + 32;
-        setDisplayChar(String.fromCharCode(randomCharCode));
-      }
-    }, 250);
+      setDisplayChar(getRandomChar);
+    }, Math.random() * 100 + 200); // Faster updates for glitch effect
 
     return () => clearInterval(interval);
+  }, [isHovered, char]);
+
+  useEffect(() => {
+    if (isHovered) return; // Avoid interference with hover effect
+
+    // Random glitch effect even when not hovered (5% chance per second)
+    const randomGlitchInterval = setInterval(() => {
+      if (Math.random() < 0.05) {
+        setIsHovered(true);
+
+        setTimeout(() => {
+          setIsHovered(false);
+        }, Math.random() * 750 + 300);
+      }
+    }, Math.random() * 750 + 300);
+
+    return () => clearInterval(randomGlitchInterval);
   }, [char, isHovered]);
-
-    // Effect for random glitch (even when not hovered)
-    useEffect(() => {
-      // Only trigger the random glitch occasionally (e.g., 1% chance)
-      const randomGlitchChance = 0.05; // 1% chance
-  
-      const randomGlitchInterval = setInterval(() => {
-        if (Math.random() < randomGlitchChance) {
-          setDisplayChar(String.fromCharCode(Math.floor(Math.random() * (126 - 32 + 1)) + 32));
-  
-          // Reset to the original character after a short delay
-          setTimeout(() => {
-            setDisplayChar(char);
-          }, 500); // Reset after 100ms
-        }
-      }, 1000); // Check every second
-  
-      return () => clearInterval(randomGlitchInterval);
-    }, [char]);
-
-  
 
   return (
     <span 
-      className="inline-block cursor-pointer mx-[5px] hover:text-purple-600 transition-colors font-mono"
+      className={`inline-block cursor-pointer mx-[2px] transition-all font-mono 
+        ${isHovered ? 'text-purple-600 -translate-y-4' : 'text-white-100'}`}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => {
         setTimeout(() => {
-            setIsHovered(false);
-            setDisplayChar(char);
-        }, Math.random() * 2500 + 500); // Continue effect for 2 seconds before stopping
+          setIsHovered(false);
+          setDisplayChar(char);
+        }, Math.random() * 2500 + 500); // Keep glitching for 500ms after leaving
       }}
     >
       {displayChar}
@@ -71,15 +71,10 @@ interface GlitchTextProps {
 }
 
 const GlitchText = ({ text }: GlitchTextProps) => {
-  const characters = text.split('');
-
   return (
     <span className="inline-block">
-      {characters.map((char, index) => (
-        <GlitchChar
-          key={`${index}-${char}`}
-          char={char}
-        />
+      {text.split('').map((char, index) => (
+        <GlitchChar key={`${index}-${char}`} char={char} />
       ))}
     </span>
   );
