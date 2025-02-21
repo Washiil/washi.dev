@@ -7,13 +7,20 @@ export default function BlogLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-    return(
-        // We need to put a navigation bar here
-        <div className="flex-auto">
-            <Navbar/>
-            <div className="w-[95%] h-[80%] outline rounded-xl">
-                {children}
-            </div>
+    return (
+        // Use flex-col to stack elements vertically
+        <div className="flex flex-col min-h-screen">
+            <Navbar />
+            
+            {/* Add margin-top for spacing and make content area flexible */}
+            <main className="flex-1 mt-32 px-4">
+                <div className="w-[98%] outline rounded-2xl mx-auto"
+                    style={{
+                        outline: '2px dashed rgba(150, 150, 150, 10)',
+                    }}>
+                    {children}
+                </div>
+            </main>
         </div>
     );
 }
