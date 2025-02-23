@@ -3,7 +3,10 @@ import path from 'path'
 import matter from 'gray-matter'
 import { compileMDX, CompileMDXResult } from 'next-mdx-remote/rsc'
 import { BlogPostMetadata } from '@/types/blog'
-import { ReactElement } from 'react'
+import React from 'react'
+import type { MDXComponents } from 'mdx/types'
+import remarkGfm from 'remark-gfm'
+import rehypeSlug from 'rehype-slug'
 
 
 const rootDirectory = path.join(process.cwd(), 'content/blogs')
@@ -15,21 +18,21 @@ export async function getBlogBySlug(slug: string): Promise<[BlogPostMetadata, Co
   
   const { data, content } = matter(fileContent)
 
-  const compiledContent = await compileMDX({
+  const compiledContent: CompileMDXResult = await compileMDX({
     source: content,
     options: { 
-        parseFrontmatter: true,
-        mdxOptions: {
-            remarkPlugins: [
-
-            ],
-            rehypePlugins: [
-
-            ],
-        }
-    }
-  })
-
+      parseFrontmatter: true,
+      mdxOptions: {
+        remarkPlugins: [
+          remarkGfm,  // Add this for basic markdown support
+        ],
+        rehypePlugins: [
+          rehypeSlug,  // Add this for heading IDs
+        ],
+      }
+    },
+  });
+  
   const metadata: BlogPostMetadata = {
       slug: realSlug,
       title: data.title,

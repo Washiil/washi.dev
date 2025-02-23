@@ -15,7 +15,7 @@ export default async function BlogPost({ params }: { params: { slug: string } })
     }
     
     return (
-      <article className="font-mono text-white">
+      <article className="font-mono text-white prose prose-lg max-w-none">
         {content.content}
       </article>
     )
