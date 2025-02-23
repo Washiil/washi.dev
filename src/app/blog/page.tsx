@@ -20,7 +20,7 @@ export default async function BlogIndex() {
             {blog.tags.length > 0 && (
               <div className="flex gap-2 my-2">
                 {blog.tags.map(tag => (
-                  <span key={tag} className="bg-gray-100 px-2 py-1 rounded text-sm">
+                  <span key={tag} className="outline outline-1 px-2 py-1 rounded text-sm">
                     {tag}
                   </span>
                 ))}

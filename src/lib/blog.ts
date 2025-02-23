@@ -6,10 +6,21 @@ import { BlogPostMetadata } from '@/types/blog'
 // import remarkGfm from 'remark-gfm'
 // import rehypeSlug from 'rehype-slug'
 
+function decodeSlugToFilePath(encodedSlug: string): string {
+    try {
+      return decodeURIComponent(encodedSlug);
+    } catch (error) {
+      // Handle invalid encoded sequences (optional)
+      console.error("Error decoding slug:", error);
+      return encodedSlug; // Or return a default/error string
+    }
+}
+
 
 const rootDirectory = path.join(process.cwd(), 'content/blogs')
 
 export async function getBlogBySlug(slug: string): Promise<[BlogPostMetadata, CompileMDXResult]> {
+    slug = decodeSlugToFilePath(slug);
   const realSlug = slug.replace(/\.mdx$/, '')
   const filePath = path.join(rootDirectory, `${realSlug}.mdx`)
   const fileContent = fs.readFileSync(filePath, { encoding: 'utf8' })

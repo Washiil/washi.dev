@@ -6,9 +6,6 @@ export async function generateStaticParams() {
   return slugs
 }
 
-
-type BlogPostProps = Promise<{ blogId: string }>
-
 export default async function BlogPost({ params }: { params: Promise<{slug: string}>}) {
   try {
     const blogId = (await params).slug;
