@@ -1,6 +1,6 @@
 export default function Blog() {
     return (
-        <div className="flex flex-col items-center justify-center w-screen h-screen overflow-hidden bg-gradient-to-tl from-black via-zinc-600/20 to-black">
+        <div className="flex flex-col w-full h-full">
             <h1 className="text-4xl font-mono">Blog is Under Construction</h1>
         </div>
     )
