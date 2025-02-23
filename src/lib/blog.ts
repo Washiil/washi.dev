@@ -4,19 +4,30 @@ import matter from 'gray-matter'
 import { compileMDX, CompileMDXResult } from 'next-mdx-remote/rsc'
 import { BlogPostMetadata } from '@/types/blog'
 import { ReactElement } from 'react'
-import { metadata } from '@/app/layout'
+
 
 const rootDirectory = path.join(process.cwd(), 'content/blogs')
 
-export async function getBlogBySlug(slug: string): Promise<[BlogPostMetadata, ReactElement]> {
+export async function getBlogBySlug(slug: string): Promise<[BlogPostMetadata, CompileMDXResult]> {
   const realSlug = slug.replace(/\.mdx$/, '')
   const filePath = path.join(rootDirectory, `${realSlug}.mdx`)
   const fileContent = fs.readFileSync(filePath, { encoding: 'utf8' })
   
   const { data, content } = matter(fileContent)
-  const { frontmatter, content: compiledContent } = await compileMDX({
+
+  const compiledContent = await compileMDX({
     source: content,
-    options: { parseFrontmatter: true }
+    options: { 
+        parseFrontmatter: true,
+        mdxOptions: {
+            remarkPlugins: [
+
+            ],
+            rehypePlugins: [
+
+            ],
+        }
+    }
   })
 
   const metadata: BlogPostMetadata = {

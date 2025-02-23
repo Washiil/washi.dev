@@ -1,4 +1,3 @@
-import { Mdx } from '@/app/components/mdx'
 import { getBlogBySlug, getAllBlogSlugs } from '@/lib/blog'
 import { notFound } from 'next/navigation'
 
@@ -17,7 +16,7 @@ export default async function BlogPost({ params }: { params: { slug: string } })
     
     return (
       <article className="font-mono text-white">
-        {content}
+        {content.content}
       </article>
     )
   } catch (error) {
