@@ -6,9 +6,13 @@ export async function generateStaticParams() {
   return slugs
 }
 
-export default async function BlogPost({ params }: { params: { slug: string } }) {
+
+type BlogPostProps = Promise<{ blogId: string }>
+
+export default async function BlogPost({ params }: { params: Promise<{slug: string}>}) {
   try {
-    const [metadata, content] = await getBlogBySlug(params.slug)
+    const blogId = (await params).slug;
+    const [metadata, content] = await getBlogBySlug(blogId)
     
     if (!metadata.published) {
       notFound()
@@ -20,6 +24,7 @@ export default async function BlogPost({ params }: { params: { slug: string } })
       </article>
     )
   } catch (error) {
+    console.log(error)
     notFound()
   }
 }

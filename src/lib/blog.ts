@@ -3,10 +3,8 @@ import path from 'path'
 import matter from 'gray-matter'
 import { compileMDX, CompileMDXResult } from 'next-mdx-remote/rsc'
 import { BlogPostMetadata } from '@/types/blog'
-import React from 'react'
-import type { MDXComponents } from 'mdx/types'
-import remarkGfm from 'remark-gfm'
-import rehypeSlug from 'rehype-slug'
+// import remarkGfm from 'remark-gfm'
+// import rehypeSlug from 'rehype-slug'
 
 
 const rootDirectory = path.join(process.cwd(), 'content/blogs')
@@ -24,10 +22,10 @@ export async function getBlogBySlug(slug: string): Promise<[BlogPostMetadata, Co
       parseFrontmatter: true,
       mdxOptions: {
         remarkPlugins: [
-          remarkGfm,  // Add this for basic markdown support
+          // remarkGfm,  // Add this for basic markdown support
         ],
         rehypePlugins: [
-          rehypeSlug,  // Add this for heading IDs
+          // rehypeSlug,  // Add this for heading IDs
         ],
       }
     },
@@ -47,7 +45,7 @@ export async function getBlogBySlug(slug: string): Promise<[BlogPostMetadata, Co
 }
 
 export async function getAllBlogSlugs() {
-  const files = fs.readdirSync(rootDirectory)
+  const files = fs.readdirSync(rootDirectory);
   return files.map(file => ({
     params: {
       slug: file.replace(/\.mdx$/, '')
@@ -59,7 +57,7 @@ export async function getAllBlogs(includeUnpublished = false): Promise<Omit<Blog
   const files = fs.readdirSync(rootDirectory)
   const blogs = await Promise.all(
     files.map(async (file) => {
-      const [metadata, content] = await getBlogBySlug(file)
+      const [metadata] = await getBlogBySlug(file)
       return metadata;
     })
   )
