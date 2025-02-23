@@ -1,6 +1,6 @@
 import { ReactElement } from "react";
 
-export interface BlogPost {
+export interface BlogPostMetadata {
     slug: string;
     title: string;
     description: string;
@@ -8,5 +8,4 @@ export interface BlogPost {
     date: string;
     tags: string[];
     published: boolean;
-    content: ReactElement;
 }

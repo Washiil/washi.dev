@@ -5,13 +5,12 @@ export default async function BlogIndex() {
   const blogs = await getAllBlogs()
   
   return (
-    <div className="max-w-4xl mx-auto">
-      <h1 className="text-3xl font-bold mb-8">Blog Posts</h1>
+    <div className="max-w-6xl mx-auto">
       <div className="space-y-8">
         {blogs.map((blog) => (
           <article key={blog.slug}>
             <Link href={`/blog/${blog.slug}`}>
-              <h2 className="text-2xl font-semibold hover:text-blue-600">
+              <h2 className="text-2xl font-semibold hover:text-purple-600">
                 {blog.title}
               </h2>
             </Link>
