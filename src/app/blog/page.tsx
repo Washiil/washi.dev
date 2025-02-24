@@ -1,7 +1,6 @@
 import { getAllBlogs } from '@/lib/blog';
 import Link from 'next/link';
 import AnimatedBorderBox from '../components/AnimateBorder';
-import StaggeredLayout from '../components/Staggered';
 
 export default async function BlogIndex() {
   const blogs = await getAllBlogs();
