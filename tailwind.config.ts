@@ -3,11 +3,7 @@ import type { Config } from 'tailwindcss';
 import defaultTheme from 'tailwindcss/defaultTheme';
 
 const config: Config = {
-  content: [
-    './src/**/*.{js,ts,jsx,tsx}',
-    './mdx-components.tsx',
-    'content/**/*.mdx',
-  ],
+  content: ['./src/**/*.{js,ts,jsx,tsx}', './mdx-components.tsx', 'content/**/*.mdx'],
 
   theme: {
     extend: {
@@ -35,8 +31,7 @@ const config: Config = {
         mono: ['"Source Code Pro"', 'monospace'],
       },
       backgroundImage: {
-        'gradient-radial':
-          'radial-gradient(50% 50% at 50% 50%, var(--tw-gradient-stops))',
+        'gradient-radial': 'radial-gradient(50% 50% at 50% 50%, var(--tw-gradient-stops))',
       },
       animation: {
         'fade-in': 'fade-in 3s ease-in-out forwards',
@@ -103,9 +98,7 @@ const config: Config = {
       },
     },
   },
-  plugins: [
-    require('@tailwindcss/typography'),
-  ],
+  plugins: [require('@tailwindcss/typography')],
 };
 
 export default config;

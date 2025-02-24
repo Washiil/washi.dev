@@ -1,27 +1,27 @@
-import { getBlogBySlug, getAllBlogSlugs } from '@/lib/blog'
-import { notFound } from 'next/navigation'
+import { getBlogBySlug, getAllBlogSlugs } from '@/lib/blog';
+import { notFound } from 'next/navigation';
 
 export async function generateStaticParams() {
-  const slugs = await getAllBlogSlugs()
-  return slugs
+  const slugs = await getAllBlogSlugs();
+  return slugs;
 }
 
-export default async function BlogPost({ params }: { params: Promise<{slug: string}>}) {
+export default async function BlogPost({ params }: { params: Promise<{ slug: string }> }) {
   try {
     const blogId = (await params).slug;
-    const [metadata, content] = await getBlogBySlug(blogId)
-    
+    const [metadata, content] = await getBlogBySlug(blogId);
+
     if (!metadata.published) {
-      notFound()
+      notFound();
     }
-    
+
     return (
-      <article className="font-mono text-white prose prose-lg max-w-none">
+      <article className="prose prose-lg max-w-none font-mono text-white">
         {content.content}
       </article>
-    )
+    );
   } catch (error) {
-    console.log(error)
-    notFound()
+    console.log(error);
+    notFound();
   }
 }

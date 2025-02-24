@@ -1,4 +1,4 @@
-'use client'
+'use client';
 
 import { useState, useEffect } from 'react';
 
@@ -6,11 +6,12 @@ interface GlitchCharProps {
   char: string;
 }
 
-const possibleChars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz?></{}[]\\|+=@#$%^&".split('');
+const possibleChars =
+  'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz?></{}[]\\|+=@#$%^&'.split('');
 
 const getRandomChar = () => {
   return possibleChars[Math.floor(Math.random() * possibleChars.length)];
-}
+};
 
 const GlitchChar = ({ char }: GlitchCharProps) => {
   const [displayChar, setDisplayChar] = useState(char);
@@ -25,9 +26,12 @@ const GlitchChar = ({ char }: GlitchCharProps) => {
     setDisplayChar(getRandomChar);
 
     // Glitch effect while hovered
-    const interval = setInterval(() => {
-      setDisplayChar(getRandomChar);
-    }, Math.random() * 100 + 200); // Faster updates for glitch effect
+    const interval = setInterval(
+      () => {
+        setDisplayChar(getRandomChar);
+      },
+      Math.random() * 100 + 200,
+    ); // Faster updates for glitch effect
 
     return () => clearInterval(interval);
   }, [isHovered, char]);
@@ -36,29 +40,37 @@ const GlitchChar = ({ char }: GlitchCharProps) => {
     if (isHovered) return; // Avoid interference with hover effect
 
     // Random glitch effect even when not hovered (5% chance per second)
-    const randomGlitchInterval = setInterval(() => {
-      if (Math.random() < 0.05) {
-        setIsHovered(true);
+    const randomGlitchInterval = setInterval(
+      () => {
+        if (Math.random() < 0.05) {
+          setIsHovered(true);
 
-        setTimeout(() => {
-          setIsHovered(false);
-        }, Math.random() * 750 + 300);
-      }
-    }, Math.random() * 750 + 300);
+          setTimeout(
+            () => {
+              setIsHovered(false);
+            },
+            Math.random() * 750 + 300,
+          );
+        }
+      },
+      Math.random() * 750 + 300,
+    );
 
     return () => clearInterval(randomGlitchInterval);
   }, [char, isHovered]);
 
   return (
-    <span 
-      className={`inline-block cursor-pointer mx-[2px] transition-all font-mono 
-        ${isHovered ? 'text-purple-600 -translate-y-4 opacity-85' : 'text-white-100'}`}
+    <span
+      className={`mx-[2px] inline-block cursor-pointer font-mono transition-all ${isHovered ? '-translate-y-4 text-purple-600 opacity-85' : 'text-white-100'}`}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => {
-        setTimeout(() => {
-          setIsHovered(false);
-          setDisplayChar(char);
-        }, Math.random() * 2500 + 500); // Keep glitching for 500ms after leaving
+        setTimeout(
+          () => {
+            setIsHovered(false);
+            setDisplayChar(char);
+          },
+          Math.random() * 2500 + 500,
+        ); // Keep glitching for 500ms after leaving
       }}
     >
       {displayChar}
