@@ -9,7 +9,9 @@ export default function Navbar() {
       <div className="m-5 flex flex-col items-center justify-between p-3 md:flex-row">
         {/* Left side: Logo/Text */}
         <Link href="/" className="text-4xl pl-12">
-          <GlitchText text="Washi.Dev" />
+          <GlitchText text="Washi" />
+          <span>.</span>
+          <GlitchText text="Dev"/>
         </Link>
 
         {/* Right side: Navigation Links */}
