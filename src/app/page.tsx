@@ -3,7 +3,6 @@ import React from 'react';
 import GlitchText from './components/GlitchedText';
 // import WireButton from "./components/WireButton";
 import Link from 'next/link';
-import AnimatedBorderBox from './components/AnimateBorder';
 
 const navigation = [
   { name: 'Projects', href: '/projects' },
@@ -13,7 +12,7 @@ const navigation = [
 
 export default function Home() {
   return (
-    <div className="flex h-screen w-screen flex-col items-center justify-center overflow-hidden bg-gradient-to-tl from-black via-zinc-600/20 to-black">
+    <main className="flex h-screen w-screen flex-col items-center justify-center overflow-hidden bg-gradient-to-tl from-black via-zinc-600/20 to-black">
       <div className="animate-glow hidden h-px w-screen animate-fade-left bg-gradient-to-r from-zinc-300/0 via-zinc-300/50 to-zinc-300/0 md:block" />
 
       <h1 className="text-edge-outline z-10 animate-title cursor-default whitespace-nowrap bg-white bg-clip-text px-0.5 py-3.5 font-display text-4xl text-transparent duration-1000 sm:text-6xl md:text-9xl">
@@ -37,6 +36,6 @@ export default function Home() {
           ))}
         </ul>
       </nav>
-    </div>
+    </main>
   );
 }

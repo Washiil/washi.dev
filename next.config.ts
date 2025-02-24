@@ -11,6 +11,16 @@ const withMdx = nextMdx({
 const nextConfig = withMdx({
   // Support MDX files as pages:
   pageExtensions: ['md', 'mdx', 'tsx', 'ts', 'jsx', 'js'],
+  images: {
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'picsum.photos',
+        port: '', // Leave empty if not needed
+        pathname: '/**', // Allows all paths on the hostname
+      },
+    ],
+  },
 });
 
 export default nextConfig;
