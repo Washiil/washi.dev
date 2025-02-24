@@ -20,7 +20,7 @@ export default function Home() {
         <span>.</span>
         <GlitchText text="Dev" />
       </h1>
-      
+
       <div className="animate-glow hidden h-px w-screen animate-fade-right bg-gradient-to-r from-zinc-300/0 via-zinc-300/50 to-zinc-300/0 md:block" />
 
       <nav className="my-16 animate-fade-in">

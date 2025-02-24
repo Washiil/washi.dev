@@ -5,13 +5,13 @@ import GlitchText from './GlitchedText';
 
 export default function Navbar() {
   return (
-    <nav className="fixed backdrop-blur-lg left-0 right-0 top-0 z-50 bg-gradient-to-b from-zinc-800 to-transparent">
+    <nav className="fixed left-0 right-0 top-0 z-50 bg-gradient-to-b from-zinc-800 to-transparent backdrop-blur-lg">
       <div className="m-5 flex flex-col items-center justify-between p-3 md:flex-row">
         {/* Left side: Logo/Text */}
-        <Link href="/" className="text-4xl pl-12">
+        <Link href="/" className="pl-12 text-4xl">
           <GlitchText text="Washi" />
           <span>.</span>
-          <GlitchText text="Dev"/>
+          <GlitchText text="Dev" />
         </Link>
 
         {/* Right side: Navigation Links */}
@@ -33,7 +33,7 @@ export default function Navbar() {
           </Link>
         </div>
       </div>
-      <div className='w-full outline outline-1 outline-gray-50/5'/>
+      <div className="w-full outline outline-1 outline-gray-50/5" />
     </nav>
   );
 }

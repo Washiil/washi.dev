@@ -10,10 +10,12 @@ export default async function BlogIndex() {
       <div className="space-y-8">
         {blogs.map((blog) => (
           // Add animation for the blog posts
-          <article key={blog.slug} className='font-mono transition-all hover:translate-x-10'>
+          <article key={blog.slug} className="font-mono transition-all hover:translate-x-10">
             <AnimatedBorderBox>
               <Link href={`/blog/${blog.slug}`}>
-                <h2 className="text-2xl font-semibold hover:text-purple-600 hover:underline">{blog.title}</h2>
+                <h2 className="text-2xl font-semibold hover:text-purple-600 hover:underline">
+                  {blog.title}
+                </h2>
               </Link>
               <div className="text-gray-500">
                 <span>{blog.date}</span> • <span>{blog.author}</span>
