@@ -5,12 +5,14 @@
 import Navbar from '../components/NavigationBar';
 
 export default function Projects() {
+  // Going to add a top section with "featured" projects as specified in the metadata of the mdx files
+  // Add some lovely animations similar to the blog elements
+
+
   return (
-    // Use flex-col to stack elements vertically
     <div className="flex min-h-screen flex-col">
       <Navbar />
 
-      {/* Add margin-top for spacing and make content area flexible */}
       <main className="mt-32 flex-1 px-4">
         <div
           className="mx-auto w-[98%] rounded-2xl outline"

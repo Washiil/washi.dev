@@ -11,6 +11,9 @@ const navigation = [
 ];
 
 export default function Home() {
+  // I want to add a dynamic svg in the bottom left corner that is essneitally multiple rings of circles
+  // with cutouts that spin in varying directions and with varying speeds
+  // Should add another nice thing to look at
   return (
     <main className="flex h-screen w-screen flex-col items-center justify-center overflow-hidden bg-gradient-to-tl from-black via-zinc-600/20 to-black">
       <div className="animate-glow hidden h-px w-screen animate-fade-left bg-gradient-to-r from-zinc-300/0 via-zinc-300/50 to-zinc-300/0 md:block" />
