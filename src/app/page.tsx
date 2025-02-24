@@ -3,6 +3,7 @@ import React from 'react';
 import GlitchText from './components/GlitchedText';
 // import WireButton from "./components/WireButton";
 import Link from 'next/link';
+import AnimatedBorderBox from './components/AnimateBorder';
 
 const navigation = [
   { name: 'Projects', href: '/projects' },
@@ -20,7 +21,7 @@ export default function Home() {
         <span>.</span>
         <GlitchText text="Dev" />
       </h1>
-
+      
       <div className="animate-glow hidden h-px w-screen animate-fade-right bg-gradient-to-r from-zinc-300/0 via-zinc-300/50 to-zinc-300/0 md:block" />
 
       <nav className="my-16 animate-fade-in">
