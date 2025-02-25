@@ -17,7 +17,7 @@ export default async function Project({ params }: { params: Promise<{ slug: stri
       <div className="flex flex-col items-center justify-center min-h-screen">
         <Header project={metadata} />
         <div className='h-[1px] w-full bg-gradient-to-r from-transparent via-white to-transparent my-14'/>
-        <article className="flex flex-col font-mono mdx-content backdrop-blur-xl max-w-2xl items-center justify-center">
+        <article className="flex flex-col font-mono mdx-content backdrop-blur-xl max-w-[54rem] items-center justify-center">
           {content.content}
         </article>
       </div>
