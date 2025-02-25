@@ -16,7 +16,7 @@ interface ContactCardProps {
 
 const ContactCard = ({ title, link, description, svg, alt }: ContactCardProps) => {
   return (
-    <LaserBorderBottom className="group">
+    <LaserBorderBottom className="group hover:-translate-y-6 duration-700">
       <div className="flex h-auto w-auto max-w-xl rounded-lg transition-all">
         <Link href={link} className="flex-shrink-0"> {/* Wrap the Image in a Link */}
           <Image
