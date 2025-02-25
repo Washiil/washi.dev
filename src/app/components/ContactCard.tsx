@@ -1,6 +1,5 @@
 'use client';
 
-import LaserBorderBottom from './LaserBorderBottom';
 import Link from 'next/link';
 import Image from 'next/image';
 
@@ -16,9 +15,9 @@ interface ContactCardProps {
 
 const ContactCard = ({ title, link, description, svg, alt }: ContactCardProps) => {
   return (
-    <LaserBorderBottom className="group hover:-translate-y-6 duration-700">
+    <div className='group hover:-translate-y-6 duration-700 draw-right'>
       <div className="flex h-auto w-auto max-w-xl rounded-lg transition-all">
-        <Link href={link} className="flex-shrink-0"> {/* Wrap the Image in a Link */}
+        <Link href={link} className="flex-shrink-0">
           <Image
             src={svg}
             alt={alt}
@@ -35,7 +34,18 @@ const ContactCard = ({ title, link, description, svg, alt }: ContactCardProps) =
           <p>{description}</p>
         </div>
       </div>
-    </LaserBorderBottom>
+      <div className='h-[1px] w-0 mt-5 bg-gradient-to-r from-transparent via-purple-600 to-transparent group-hover:animate-[draw-right_0.5s_forwards_0.1s]'/>
+      <style jsx>{`
+        @keyframes draw-right {
+          0% {
+            width: 0%;
+          }
+          100% {
+            width: 100%;
+          }
+        }
+      `}</style>
+    </div>
   );
 };
 
