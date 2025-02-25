@@ -15,7 +15,7 @@ interface ContactCardProps {
 
 const ContactCard = ({ title, link, description, svg, alt }: ContactCardProps) => {
   return (
-    <div className='group hover:-translate-y-6 duration-700 draw-right'>
+    <div className='group hover:-translate-y-6 duration-1000 draw-right'>
       <div className="flex h-auto w-auto max-w-xl rounded-lg transition-all">
         <Link href={link} className="flex-shrink-0">
           <Image

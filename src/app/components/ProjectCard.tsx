@@ -16,7 +16,7 @@ const ProjectCard = ({ project, featured }: ProjectCardProps) => {
             <Link href={`/projects/${project.slug}`}>
                 <div>
                     <h3 className={`transition-all duration-700 ${featured ? 'text-4xl' : 'text-xl'} font-bold group-hover:text-purple-600 opacity-50 group-hover:opacity-100`}>{project.title}</h3>
-                    <div className='transition-all duration-700 my-1 h-[1px] bg-gradient-to-r from-transparent via-zinc-300/75 to-transparent group-hover:from-purple-600/75 group-hover:via-purple-600/30'/>
+                    <div className='transition-all duration-700 my-1 h-[1px] bg-gradient-to-r from-transparent via-zinc-300/75 to-transparent'/>
                     <p>{project.description}</p>
                 </div>
                 {/* Add more content here, and ensure it also fills the space if needed */}
