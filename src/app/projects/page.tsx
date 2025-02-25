@@ -18,7 +18,7 @@ export default async function Projects() {
   return (
     <div className="mx-auto max-w-7xl">
       <div className="w-full text-center">
-        <h1 className="font-mono text-4xl">Projects</h1>
+        <h1 className="font-mono text-4xl font-bold">Featured Projects</h1>
       </div>
       {/* Top Priority layout aka featured projects*/}
       <div className="grid grid-cols-1 lg:grid-cols-9">
