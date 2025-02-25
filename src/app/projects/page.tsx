@@ -8,7 +8,6 @@ export default function Projects() {
   // Going to add a top section with "featured" projects as specified in the metadata of the mdx files
   // Add some lovely animations similar to the blog elements
 
-
   return (
     <div className="flex min-h-screen flex-col">
       <Navbar />
