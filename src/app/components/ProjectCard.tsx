@@ -12,20 +12,20 @@ const ProjectCard = ({ project, featured }: ProjectCardProps) => {
   return (
     <div className="group flex h-full w-full flex-col rounded-md p-4 transition-all duration-700 hover:translate-x-5">
       <div className="absolute bottom-0 left-0 h-0 w-[1px] bg-gradient-to-t from-transparent via-purple-600 to-transparent group-hover:animate-[draw-up_0.3s_forwards_0.1s]" />
-      
-      <Link href={`/projects/${project.slug}`} className='w-full h-full'>
+
+      <Link href={`/projects/${project.slug}`} className="h-full w-full">
         <div>
           <h3
-            className={`transition-all duration-700 font-mono ${featured ? 'text-4xl' : 'text-xl'} font-bold opacity-50 group-hover:text-purple-600 group-hover:opacity-100`}
+            className={`font-mono transition-all duration-700 ${featured ? 'text-4xl' : 'text-xl'} font-bold opacity-50 group-hover:text-purple-600 group-hover:opacity-100`}
           >
             {project.title}
           </h3>
 
           <div className="my-1 h-[1px] bg-gradient-to-r from-transparent via-zinc-300/75 to-transparent transition-all duration-700" />
-          
-          <p className='text-lg'>{project.description}</p>
 
-          <br/>
+          <p className="text-lg">{project.description}</p>
+
+          <br />
           {project.tags.length > 0 && (
             <div className="my-2 flex flex-wrap gap-2">
               {project.tags.map((tag) => (

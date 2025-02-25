@@ -38,7 +38,7 @@ export default async function Projects() {
       <div className="my-10 h-[1px] bg-gradient-to-r from-transparent via-zinc-300/75 to-transparent" />
 
       {/* Other Projects */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
+      <div className="grid grid-cols-1 gap-4 lg:grid-cols-2">
         {projects.slice(3).map((project) => (
           // Add animation for the blog posts
           <div key={project.slug} className="p-3">

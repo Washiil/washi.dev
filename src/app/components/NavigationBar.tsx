@@ -15,7 +15,10 @@ export default function Navbar() {
     <nav className="fixed left-0 right-0 top-0 z-50 bg-gradient-to-b from-zinc-800 to-transparent backdrop-blur-lg">
       <div className="m-5 flex flex-col items-center justify-between p-3 md:flex-row">
         {/* Left side: Logo/Text */}
-        <button onClick={handleBackClick} className="transition-all duration-700 pl-12 text-4xl hover:scale-110">
+        <button
+          onClick={handleBackClick}
+          className="pl-12 text-4xl transition-all duration-700 hover:scale-110"
+        >
           <span>← </span>
           <GlitchText text="Washi" />
           <span>.</span>
