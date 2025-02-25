@@ -17,6 +17,9 @@ export default async function Projects() {
 
   return (
     <div className="mx-auto max-w-7xl font-mono">
+      <div className="w-full text-center">
+        <h1 className="font-mono text-4xl">Projects</h1>
+      </div>
       {/* Top Priority layout aka featured projects*/}
       <div className="grid grid-cols-1 lg:grid-cols-9">
         <div className="col-span-1 h-full w-full p-3 lg:col-span-5">
@@ -35,10 +38,12 @@ export default async function Projects() {
       <div className="my-10 h-[1px] bg-gradient-to-r from-transparent via-zinc-300/75 to-transparent" />
 
       {/* Other Projects */}
-      <div className="space-y-8">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
         {projects.slice(3).map((project) => (
           // Add animation for the blog posts
-          <article key={project.slug}>{project.description}</article>
+          <div className="p-3">
+            <ProjectCard project={project} featured={false} />
+          </div>
         ))}
       </div>
     </div>

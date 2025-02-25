@@ -7,6 +7,9 @@ export default async function BlogIndex() {
 
   return (
     <div className="mx-auto max-w-7xl">
+      <div className="w-full text-center">
+        <h1 className="font-mono text-4xl">Developer Blog</h1>
+      </div>
       <div className="space-y-8">
         {blogs.map((blog) => (
           // Add animation for the blog posts
