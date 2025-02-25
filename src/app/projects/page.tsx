@@ -41,7 +41,7 @@ export default async function Projects() {
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
         {projects.slice(3).map((project) => (
           // Add animation for the blog posts
-          <div className="p-3">
+          <div key={project.slug} className="p-3">
             <ProjectCard project={project} featured={false} />
           </div>
         ))}
