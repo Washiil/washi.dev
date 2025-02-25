@@ -2,28 +2,50 @@
 // management system to format and display the MDX files and then
 // use these files to diaply here so that I can reduce overhead.
 
+import { getAllProjects } from '@/lib/project';
 import Navbar from '../components/NavigationBar';
+import { ProjectMetadata } from '@/types/project';
+import ProjectCard from '../components/ProjectCard';
 
-export default function Projects() {
+export default async function Projects() {
   // Going to add a top section with "featured" projects as specified in the metadata of the mdx files
   // Add some lovely animations similar to the blog elements
 
-  return (
-    <div className="flex min-h-screen flex-col">
-      <Navbar />
+  const projects: ProjectMetadata[] = await getAllProjects();
+  const featuredProject: ProjectMetadata = projects[0];
+  const slightFeature1: ProjectMetadata = projects[1];
+  const slightFeature2: ProjectMetadata = projects[2];
 
-      <main className="mt-32 flex-1 px-4">
-        <div
-          className="mx-auto w-[98%] rounded-2xl outline"
-          style={{
-            outline: '2px dashed rgba(150, 150, 150, 10)',
-          }}
-        >
-          <div className="flex h-screen w-screen flex-col items-center justify-center overflow-hidden bg-gradient-to-tl from-black via-zinc-600/20 to-black">
-            <h1 className="font-mono text-4xl">Projects page is Under Construction</h1>
+  return (
+    <div className="mx-auto max-w-7xl font-mono">
+      {/* Top Priority layout aka featured projects*/}
+      <div className='grid grid-cols-1 lg:grid-cols-9'>
+        <div className='col-span-1 lg:col-span-5 p-3 w-full h-full'>
+          <ProjectCard project={featuredProject} featured={true}/>
+        </div>
+        <div className="col-span-2 lg:col-span-4 grid grid-rows-1 lg:grid-rows-2">
+          <div className="p-3">
+            <ProjectCard project={slightFeature1} featured={false}/>
+          </div>
+          <div className="p-3">
+            <ProjectCard project={slightFeature2} featured={false}/>
           </div>
         </div>
-      </main>
+      </div>
+
+      <div className='my-10 h-[1px] bg-gradient-to-r from-transparent via-zinc-300/75 to-transparent'/>
+
+      <div>AJNDAJDSNASDJAIDS</div>
+
+      {/* Other Projects */}
+      <div className="space-y-8">
+        {projects.slice(3).map((project) => (
+          // Add animation for the blog posts
+          <article key={project.slug}>
+            {project.description}
+          </article>
+        ))}
+      </div>
     </div>
   );
 }
