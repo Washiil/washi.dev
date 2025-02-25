@@ -35,8 +35,6 @@ export default async function Projects() {
 
       <div className='my-10 h-[1px] bg-gradient-to-r from-transparent via-zinc-300/75 to-transparent'/>
 
-      <div>AJNDAJDSNASDJAIDS</div>
-
       {/* Other Projects */}
       <div className="space-y-8">
         {projects.slice(3).map((project) => (
