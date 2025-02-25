@@ -8,7 +8,11 @@ export default function Navbar() {
   const router = useRouter();
 
   const handleBackClick = () => {
-    router.back();
+    const currentPath = window.location.pathname;
+    const segments = currentPath.split('/').filter((segment) => segment !== '');
+    segments.pop();
+    const newPath = segments.length > 0 ? `/${segments.join('/')}` : '/';
+    router.push(newPath);
   };
 
   return (
@@ -19,14 +23,14 @@ export default function Navbar() {
           onClick={handleBackClick}
           className="pl-12 text-4xl transition-all duration-700 hover:scale-110"
         >
-          <span>← </span>
+          <span className="hidden md:inline">← </span>
           <GlitchText text="Washi" />
           <span>.</span>
           <GlitchText text="Dev" />
         </button>
 
         {/* Right side: Navigation Links */}
-        <div className="flex space-x-4 font-mono font-light">
+        <div className="flex space-x-4 pt-3 font-mono font-light md:pt-0">
           <Link
             href="/projects"
             className="p-3 text-xl underline-offset-4 opacity-85 hover:underline"

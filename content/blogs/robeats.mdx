@@ -1,0 +1,67 @@
+---
+title: 'Rust, Roblox, and Rhythm'
+description: I got tired of losing to bots on a rythm game... so I made a better one. Introducing- Roblot, the best (non-memory reading) Roblox ryhtm game player of all time.
+author: 'Washi'
+date: '23-03-2025'
+tags: ['rust', 'programming', 'concurrency']
+published: true
+---
+
+# Why?
+
+I got home one day and decided to play a new Rythm game. I've always been a fan of the genre as it combines both my love of music and games. As I began playing I noticed a player performing almost _inhuman_... but I continued playing enjoying my time and eventually leaving to do other things. However, when I got back on the next day I saw a few more of these suspicious players. After trying to interact with them and chat I realzied they were in fact bots.
+
+<br />
+<br /> But, the second thing I noticed, was that they were still missing.
+
+**The Vision: Automated Rhythm Gaming**
+
+The core idea was simple: create a bot that could see the notes in RoBeats and hit them with perfect timing. But the implementation was far from trivial. We needed to capture the game window, analyze the visual data, and translate it into precise keyboard inputs, all with minimal latency. Oh and of course crush the other bots in accuracy.
+
+**Rust: The Perfect Tool for the Job**
+
+Rust's focus on performance and safety made it the ideal language for this project. I knew I'd need to leverage concurrency to handle image processing and input simulation efficiently, and Rust's ownership and borrowing system provided the guarantees I needed to avoid data races and other common threading issues.
+
+**Conquering Concurrency: Atomic Operations and Multithreading**
+
+The heart of the bot lies in its multithreaded architecture. I implemented a producer-consumer model:
+
+- **Producer Thread:** This thread was responsible for capturing the Roblox game window using the `xcap` crate and analyzing the image data to identify note positions. It then sent this information to the consumer threads.
+- **Consumer Threads:** These threads received note data, calculated the precise timing for each note, and simulated keyboard inputs using the `enigo` crate.
+
+To ensure thread-safe data sharing, I heavily relied on Rust's atomic operations. `Arc<AtomicU8>` and `Arc<AtomicU64>` were crucial for sharing data like note positions and timing delays between threads without the overhead of traditional mutexes in many situations.
+
+**Real-time Image Analysis: A Pixel-Perfect Challenge**
+
+Analyzing the game window in real-time was a significant challenge. I needed to quickly identify the notes and their positions, which required efficient image processing. I experimented with various image processing techniques, optimizing for speed and accuracy. The goal was to minimize the time between capturing the image and sending the note information to the consumer threads. Eventually I settled on a soltion by leveraging the games in game colour settings. By setting the notes to a specific colour I was able to use a mask and then identify notes solely based on colour rather than image recognition. This vastly reduced processing time and the amount of data passed between threads.
+
+**Fine-Tuning the Timing: Dynamic Delay Adjustment**
+
+Achieving perfect synchronization was critical. Even a slight delay could throw off the bot's performance. To address this, I implemented a dynamic delay adjustment feature. Users could adjust the note delay in real-time using keyboard inputs, allowing them to fine-tune the bot's timing for optimal performance. The `device_query` crate was indispensable for detecting these user inputs. This allows for users to also account for things like network delay between them and the game.
+
+**Inter-Thread Communication: Channels and Efficiency**
+
+Channels allowed me to send note information from the producer to the consumers without introducing unnecessary overhead.
+
+**Key Libraries: The Building Blocks**
+
+- **device_query:** For real time keyboard input detection.
+- **enigo:** For simulating keyboard inputs.
+- **parking_lot:** For mutex and read-write lock implementations, when needed.
+- **std::sync::atomic:** The backbone of the concurrent data sharing.
+- **xcap::Window:** For reliable cross platform window capture.
+
+**Lessons Learned and Future Improvements**
+
+Building the RoBeats AI bot was a rewarding experience. I learned a great deal about Rust's concurrency features, real-time image analysis, and the challenges of building high-performance applications.
+
+Here are some potential areas for future improvement:
+
+- **Advanced Image Processing:** Implementing more sophisticated image processing techniques could improve the accuracy of note detection, especially in complex game scenarios.
+- **Machine Learning Integration:** Exploring the use of machine learning to predict note patterns and improve timing accuracy.
+- **Improved Delay Algorithm:** Creating a more advanced algorithm to automatically calculate and adjust the note delay.
+- **GUI:** Creating a graphical user interface to make the bot more user-friendly.
+
+**Conclusion**
+
+This project was a testament to Rust's power and flexibility. By leveraging its concurrency features and high-performance capabilities, I was able to create a bot that could play RoBeats with inhuman accuracy and gain my place back on the podium

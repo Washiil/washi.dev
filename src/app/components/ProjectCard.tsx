@@ -29,7 +29,7 @@ const ProjectCard = ({ project, featured }: ProjectCardProps) => {
           {project.tags.length > 0 && (
             <div className="my-2 flex flex-wrap gap-2">
               {project.tags.map((tag) => (
-                <span key={tag} className="rounded px-2 py-1 text-sm outline outline-1">
+                <span key={tag} className="rounded px-2 py-1 font-mono text-sm outline outline-1">
                   {tag}
                 </span>
               ))}

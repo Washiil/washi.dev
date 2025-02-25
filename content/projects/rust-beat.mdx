@@ -7,4 +7,35 @@ tags: ['python', 'rust', 'leetcode', 'algorithms', 'data-structures']
 priority: 3
 ---
 
-CSA Savior is a project...
+# RoBeats AI Bot
+
+This project is an AI bot designed to play the Roblox rhythm game "RoBeats." It leverages Rust's powerful concurrency features, specifically atomic operations and multithreading, to achieve blazingly fast performance.
+
+## Core Features
+
+- **High Performance:** Utilizes atomic concurrency and multithreading for efficient processing and minimal latency.
+- **Real-time Image Analysis:** Captures and analyzes the Roblox game window to determine note positions.
+- **Automated Gameplay:** Simulates keyboard inputs to play the rhythm game accurately.
+- **Dynamic Delay Adjustment:** Allows users to adjust the note delay in real-time for optimal synchronization.
+- **Cross-Platform Window Capture:** Uses `xcap` crate to capture the Roblox game window.
+- **Atomic Data Sharing:** Uses `Arc<AtomicU8>` and `Arc<AtomicU64>` for safe and efficient data sharing between threads.
+- **Channel-Based Communication:** Uses `crossbeam::channel` for inter-thread communication.
+- **Keyboard Simulation:** Uses `enigo` for simulating keyboard inputs.
+- **Input Detection:** Uses `device_query` for detecting user input to adjust delay and stop the bot.
+
+## Technical Implementation
+
+The bot is implemented in Rust, emphasizing performance and concurrency. It consists of:
+
+- **Producer Thread:** Captures the Roblox game window, analyzes the image data, and sends note information to consumer threads.
+- **Consumer Threads:** Receive note information, calculate timing, and simulate keyboard inputs.
+- **Atomic Data Structures:** Used for efficient and thread-safe data sharing.
+- **Real-time Performance Monitoring:** Displays operations per second and delay information.
+
+## Key Libraries
+
+- **`device_query`:** For detecting keyboard inputs.
+- **`enigo`:** For simulating keyboard inputs.
+- **`parking_lot`:** For mutex and read-write lock implementations.
+- **`std::sync::atomic`:** For atomic operations.
+- **`xcap::Window`:** For capturing the Roblox game window.

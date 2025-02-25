@@ -4,48 +4,25 @@ description: A repository that has my solutions, written in rust, for advent of 
 repository: Washiil/Advent-of-Code
 url:
 tags: ['rust', 'algorithms', 'datastructures']
-priority: 2
+priority: 3
 ---
 
-# Advent of Code 2023: Rust Solutions
+# AOC Solutions
 
-This project presents my solutions to the Advent of Code 2023 challenges, crafted entirely in Rust. The primary motivation was to rigorously explore and demonstrate Rust's performance characteristics, alongside the development of a streamlined workflow for algorithmic problem-solving.
+This project presents my solutions to the Advent of Code challenges, solved entirely in Rust. The primary motivation was to rigorously explore and demonstrate Rust's performance characteristics, alongside the development of a streamlined workflow for algorithmic problem-solving.
 
 ## Key Features
 
-- **Custom CLI:** A bespoke command-line interface enhances development efficiency.
-  - `cargo scaffold`: Automates the creation of new challenge directories, including input files and code templates.
-  - `cargo solve`: Executes solutions and provides detailed performance metrics, such as execution times.
-  - `cargo solve --release --time`: Enables comprehensive benchmarking, yielding average execution times for optimized builds.
 - **Rigorous Testing:** Comprehensive unit tests are implemented for each challenge, ensuring solution correctness via `cargo test`.
 - **Code Quality:** Adherence to Rust coding standards is maintained through `cargo fmt` and `cargo clippy` for formatting and linting.
 - **Type Safety:** The Rust type system was instrumental in identifying and mitigating potential errors, particularly concerning integer overflows.
 - **Library Utilization:** Established Rust crates, including `itertools` and `regex`, are leveraged for code conciseness and efficiency.
 - **Performance Focus:** Complex data structure challenges were addressed with an emphasis on optimal Rust implementations.
 
-## Technical Details
-
-This project provided a valuable opportunity to delve into Rust's ecosystem and refine development practices for algorithmic problem-solving. The resulting codebase is both performant and well-structured, reflecting a commitment to best practices.
-
-### Workflow
-
-The workflow was designed to be efficient and reproducible:
-
-1.  **Scaffolding:** New challenges were quickly initialized using `cargo scaffold`.
-2.  **Development:** Solutions were implemented with a focus on performance and clarity.
-3.  **Testing:** Unit tests were written and executed to ensure correctness.
-4.  **Benchmarking:** Performance was evaluated using `cargo solve --release --time`.
-5.  **Code Review:** Code was formatted and linted using `cargo fmt` and `cargo clippy`.
-
-### Dependencies
-
-- `itertools`
-- `regex`
-
-### Performance Considerations
+## Performance Considerations
 
 Particular attention was paid to performance, especially in challenges involving large datasets or complex algorithms. Benchmarking was used to identify and optimize bottlenecks.
 
 ## Conclusion
 
-I am satisfied with the resulting implementation and the insights gained from this process. This project serves as a testament to my proficiency in Rust and my commitment to developing performant and maintainable code.
+I am satisfied with the resulting implementation and the insights gained from this process. I plan on continuing to solve more `Advent of Code` problems each year!

@@ -47,7 +47,7 @@ export default function Contact() {
         </div>
 
         <div className="mx-20 mb-12 mt-20 text-center font-mono">
-          <p>Thank you for visiting my website hope to hear from you soon! ❤️</p>
+          <p>Thank you for visiting my website hope to hear from you soon!</p>
         </div>
       </main>
     </div>
