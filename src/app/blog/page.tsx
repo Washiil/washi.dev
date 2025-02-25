@@ -1,6 +1,6 @@
 import { getAllBlogs } from '@/lib/blog';
 import Link from 'next/link';
-import AnimatedBorderBox from '../components/AnimateBorder';
+import LaserBorderLeft from '../components/LaserBorderLeft';
 
 export default async function BlogIndex() {
   const blogs = await getAllBlogs();
@@ -11,7 +11,7 @@ export default async function BlogIndex() {
         {blogs.map((blog) => (
           // Add animation for the blog posts
           <article key={blog.slug} className="font-mono transition-all hover:translate-x-10">
-            <AnimatedBorderBox>
+            <LaserBorderLeft>
               <Link href={`/blog/${blog.slug}`}>
                 <h2 className="text-2xl font-semibold hover:text-purple-600 hover:underline">
                   {blog.title}
@@ -30,7 +30,7 @@ export default async function BlogIndex() {
                 </div>
               )}
               <p className="mt-2">{blog.description}</p>
-            </AnimatedBorderBox>
+            </LaserBorderLeft>
           </article>
         ))}
       </div>
