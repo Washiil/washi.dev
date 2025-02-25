@@ -9,7 +9,7 @@ export async function generateStaticParams() {
 export default async function BlogPost({ params }: { params: Promise<{ slug: string }> }) {
   try {
     const blogId = (await params).slug;
-    const [metadata, content] = await getProjectBySlug(blogId);
+    const [, content] = await getProjectBySlug(blogId);
 
     return (
       <article className="prose prose-lg max-w-none font-mono text-white">

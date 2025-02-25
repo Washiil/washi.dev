@@ -3,7 +3,6 @@
 // use these files to diaply here so that I can reduce overhead.
 
 import { getAllProjects } from '@/lib/project';
-import Navbar from '../components/NavigationBar';
 import { ProjectMetadata } from '@/types/project';
 import ProjectCard from '../components/ProjectCard';
 
@@ -19,29 +18,27 @@ export default async function Projects() {
   return (
     <div className="mx-auto max-w-7xl font-mono">
       {/* Top Priority layout aka featured projects*/}
-      <div className='grid grid-cols-1 lg:grid-cols-9'>
-        <div className='col-span-1 lg:col-span-5 p-3 w-full h-full'>
-          <ProjectCard project={featuredProject} featured={true}/>
+      <div className="grid grid-cols-1 lg:grid-cols-9">
+        <div className="col-span-1 h-full w-full p-3 lg:col-span-5">
+          <ProjectCard project={featuredProject} featured={true} />
         </div>
-        <div className="col-span-2 lg:col-span-4 grid grid-rows-1 lg:grid-rows-2">
+        <div className="col-span-2 grid grid-rows-1 lg:col-span-4 lg:grid-rows-2">
           <div className="p-3">
-            <ProjectCard project={slightFeature1} featured={false}/>
+            <ProjectCard project={slightFeature1} featured={false} />
           </div>
           <div className="p-3">
-            <ProjectCard project={slightFeature2} featured={false}/>
+            <ProjectCard project={slightFeature2} featured={false} />
           </div>
         </div>
       </div>
 
-      <div className='my-10 h-[1px] bg-gradient-to-r from-transparent via-zinc-300/75 to-transparent'/>
+      <div className="my-10 h-[1px] bg-gradient-to-r from-transparent via-zinc-300/75 to-transparent" />
 
       {/* Other Projects */}
       <div className="space-y-8">
         {projects.slice(3).map((project) => (
           // Add animation for the blog posts
-          <article key={project.slug}>
-            {project.description}
-          </article>
+          <article key={project.slug}>{project.description}</article>
         ))}
       </div>
     </div>

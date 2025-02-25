@@ -15,7 +15,7 @@ interface ContactCardProps {
 
 const ContactCard = ({ title, link, description, svg, alt }: ContactCardProps) => {
   return (
-    <div className='group hover:-translate-y-6 duration-1000 draw-right'>
+    <div className="draw-right group duration-1000 hover:-translate-y-6">
       <div className="flex h-auto w-auto max-w-xl rounded-lg transition-all">
         <Link href={link} className="flex-shrink-0">
           <Image
@@ -27,14 +27,14 @@ const ContactCard = ({ title, link, description, svg, alt }: ContactCardProps) =
         <div className="m-5 flex flex-col">
           <Link
             href={link}
-            className="underline-offset-4 transition-all group-hover:text-purple-600 hover:underline"
+            className="underline-offset-4 transition-all hover:underline group-hover:text-purple-600"
           >
             <p className="text-4xl">{title} 🔗</p>
           </Link>
           <p>{description}</p>
         </div>
       </div>
-      <div className='h-[1px] w-0 mt-5 bg-gradient-to-r from-transparent via-purple-600 to-transparent group-hover:animate-[draw-right_0.5s_forwards_0.1s]'/>
+      <div className="mt-5 h-[1px] w-0 bg-gradient-to-r from-transparent via-purple-600 to-transparent group-hover:animate-[draw-right_0.5s_forwards_0.1s]" />
       <style jsx>{`
         @keyframes draw-right {
           0% {

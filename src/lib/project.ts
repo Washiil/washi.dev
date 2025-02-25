@@ -74,8 +74,7 @@ export async function getAllProjects(): Promise<Omit<ProjectMetadata, 'content'>
     }),
   );
 
-  return projects
-    .sort((a, b) => {
-      return a.priority - b.priority
-    });
+  return projects.sort((a, b) => {
+    return a.priority - b.priority;
+  });
 }

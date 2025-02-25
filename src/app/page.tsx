@@ -32,7 +32,7 @@ export default function Home() {
             <Link
               key={item.href}
               href={item.href}
-              className="m-2 p-3 font-mono text-xl underline-offset-4 opacity-65 transition-all hover:-translate-y-2 hover:scale-125 hover:text-purple-600 hover:underline hover:opacity-100 duration-500"
+              className="m-2 p-3 font-mono text-xl underline-offset-4 opacity-65 transition-all duration-500 hover:-translate-y-2 hover:scale-125 hover:text-purple-600 hover:underline hover:opacity-100"
             >
               {item.name}
             </Link>
