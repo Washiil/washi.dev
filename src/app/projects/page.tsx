@@ -16,7 +16,7 @@ export default async function Projects() {
   const slightFeature2: ProjectMetadata = projects[2];
 
   return (
-    <div className="mx-auto max-w-7xl font-mono">
+    <div className="mx-auto max-w-7xl">
       <div className="w-full text-center">
         <h1 className="font-mono text-4xl">Projects</h1>
       </div>

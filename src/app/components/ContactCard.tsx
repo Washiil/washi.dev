@@ -29,9 +29,9 @@ const ContactCard = ({ title, link, description, svg, alt }: ContactCardProps) =
             href={link}
             className="underline-offset-4 transition-all hover:underline group-hover:text-purple-600"
           >
-            <p className="text-4xl">{title} 🔗</p>
+            <h1 className="text-4xl font-mono">{title} 🔗</h1>
           </Link>
-          <p>{description}</p>
+          <p className='text-lg py-2'>{description}</p>
         </div>
       </div>
       <div className="mt-5 h-[1px] w-0 bg-gradient-to-r from-transparent via-purple-600 to-transparent group-hover:animate-[draw-right_0.5s_forwards_0.1s]" />

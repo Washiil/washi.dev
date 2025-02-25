@@ -14,7 +14,7 @@ export default function Contact() {
       {/* Add margin-top for spacing and make content area flexible */}
       <main className="mt-56">
         <div className="mx-[8%] rounded-2xl">
-          <div className="lg:grid-row-2 grid grid-cols-1 grid-rows-1 place-items-center gap-x-4 gap-y-4 font-mono lg:grid-cols-2 lg:gap-y-16">
+          <div className="lg:grid-row-2 grid grid-cols-1 grid-rows-1 place-items-center gap-x-4 gap-y-4 lg:grid-cols-2 lg:gap-y-16">
             <ContactCard
               title="Github"
               alt="Github SVG"

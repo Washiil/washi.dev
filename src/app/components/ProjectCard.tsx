@@ -15,12 +15,25 @@ const ProjectCard = ({ project, featured }: ProjectCardProps) => {
       <Link href={`/projects/${project.slug}`}>
         <div>
           <h3
-            className={`transition-all duration-700 ${featured ? 'text-4xl' : 'text-xl'} font-bold opacity-50 group-hover:text-purple-600 group-hover:opacity-100`}
+            className={`transition-all duration-700 font-mono ${featured ? 'text-4xl' : 'text-xl'} font-bold opacity-50 group-hover:text-purple-600 group-hover:opacity-100`}
           >
             {project.title}
           </h3>
+
           <div className="my-1 h-[1px] bg-gradient-to-r from-transparent via-zinc-300/75 to-transparent transition-all duration-700" />
-          <p>{project.description}</p>
+          
+          <p className='text-lg'>{project.description}</p>
+
+          <br/>
+          {project.tags.length > 0 && (
+            <div className="my-2 flex flex-wrap gap-2">
+              {project.tags.map((tag) => (
+                <span key={tag} className="rounded px-2 py-1 text-sm outline outline-1">
+                  {tag}
+                </span>
+              ))}
+            </div>
+          )}
         </div>
         {/* Add more content here, and ensure it also fills the space if needed */}
       </Link>
