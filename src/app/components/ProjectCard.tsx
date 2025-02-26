@@ -10,13 +10,16 @@ interface ProjectCardProps {
 
 const ProjectCard = ({ project, featured }: ProjectCardProps) => {
   return (
-    <div className="group flex h-full w-full flex-col rounded-md p-4 transition-all duration-700 hover:translate-x-5">
-      <div className="absolute bottom-0 left-0 h-0 w-[1px] bg-gradient-to-t from-transparent via-purple-600 to-transparent group-hover:animate-[draw-up_0.3s_forwards_0.1s]" />
+    <div className="group relative flex h-full w-full flex-col rounded-md p-4 transition-all duration-700 md:hover:translate-x-5 intersect-full intersect:translate-x-2 sm:intersect:-translate-x-0">
+      {/* Intersect Javascript Dependency*/}
+      <script defer src="https://unpkg.com/tailwindcss-intersect@2.x.x/dist/observer.min.js" />
+
+      <div className="absolute bottom-0 left-0 h-0 w-[1px] bg-gradient-to-t from-transparent via-purple-600 to-transparent md:group-hover:animate-[draw-up_0.3s_forwards_0.1s] intersect-full intersect:animate-[draw-up_0.3s_forwards_0.1s] sm:intersect:animate-none"/>
 
       <Link href={`/projects/${project.slug}`} className="h-full w-full">
         <div>
           <h3
-            className={`font-mono transition-all duration-700 ${featured ? 'text-4xl' : 'text-xl'} font-bold opacity-50 group-hover:text-purple-600 group-hover:opacity-100`}
+            className={`font-mono transition-all duration-700 ${featured ? 'text-4xl' : 'text-xl'} font-bold opacity-50 md:group-hover:text-purple-600 md:group-hover:opacity-100`}
           >
             {project.title}
           </h3>
@@ -38,6 +41,7 @@ const ProjectCard = ({ project, featured }: ProjectCardProps) => {
         </div>
         {/* Add more content here, and ensure it also fills the space if needed */}
       </Link>
+
       <style jsx>{`
         @keyframes draw-up {
           0% {
