@@ -1,4 +1,4 @@
-@import "tailwindcss-intersect";
+@import 'tailwindcss-intersect';
 
 @tailwind base;
 @tailwind components;

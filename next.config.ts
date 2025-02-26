@@ -1,26 +1,15 @@
-import nextMdx from '@next/mdx';
+import createMDX from '@next/mdx';
 
-const withMdx = nextMdx({
-  // By default only the `.mdx` extension is supported.
-  extension: /\.mdx?$/,
+/** @type {import('next').NextConfig} */
+const nextConfig = {
+  pageExtensions: ['js', 'jsx', 'md', 'mdx', 'ts', 'tsx'],
+};
+
+const withMDX = createMDX({
   options: {
-    /* otherOptions… */
+    remarkPlugins: [],
+    rehypePlugins: [],
   },
 });
 
-const nextConfig = withMdx({
-  // Support MDX files as pages:
-  pageExtensions: ['md', 'mdx', 'tsx', 'ts', 'jsx', 'js'],
-  images: {
-    remotePatterns: [
-      {
-        protocol: 'https',
-        hostname: 'picsum.photos',
-        port: '', // Leave empty if not needed
-        pathname: '/**', // Allows all paths on the hostname
-      },
-    ],
-  },
-});
-
-export default nextConfig;
+export default withMDX(nextConfig);

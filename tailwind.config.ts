@@ -98,10 +98,7 @@ const config: Config = {
       },
     },
   },
-  plugins: [
-    require('@tailwindcss/typography'),
-    require('tailwindcss-intersect')
-  ],
+  plugins: [require('@tailwindcss/typography'), require('tailwindcss-intersect')],
 };
 
 export default config;

@@ -10,11 +10,11 @@ interface ProjectCardProps {
 
 const ProjectCard = ({ project, featured }: ProjectCardProps) => {
   return (
-    <div className="group relative flex h-full w-full flex-col rounded-md p-4 transition-all duration-700 md:hover:translate-x-5 intersect-full intersect:translate-x-2 sm:intersect:-translate-x-0">
+    <div className="intersect-full group relative flex h-full w-full flex-col rounded-md p-4 transition-all duration-700 intersect:translate-x-2 sm:intersect:-translate-x-0 md:hover:translate-x-5">
       {/* Intersect Javascript Dependency*/}
       <script defer src="https://unpkg.com/tailwindcss-intersect@2.x.x/dist/observer.min.js" />
 
-      <div className="absolute bottom-0 left-0 h-0 w-[1px] bg-gradient-to-t from-transparent via-purple-600 to-transparent md:group-hover:animate-[draw-up_0.3s_forwards_0.1s] intersect-full intersect:animate-[draw-up_0.3s_forwards_0.1s] sm:intersect:animate-none"/>
+      <div className="intersect-full absolute bottom-0 left-0 h-0 w-[1px] bg-gradient-to-t from-transparent via-purple-600 to-transparent intersect:animate-[draw-up_0.3s_forwards_0.1s] sm:intersect:animate-none md:group-hover:animate-[draw-up_0.3s_forwards_0.1s]" />
 
       <Link href={`/projects/${project.slug}`} className="h-full w-full">
         <div>
