@@ -1,6 +1,6 @@
 import Navbar from "./components/NavigationBar"
 import GlitchText from "./components/GlitchedText";
-// app/not-found.tsx
+
 export default function NotFound() {
     return (
         <div>
