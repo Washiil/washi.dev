@@ -3,6 +3,7 @@ import linkedinIcon from '../../../public/linkedin.svg';
 import githubIcon from '../../../public/github.svg';
 import mailIcon from '../../../public/email.svg';
 import webIcon from '../../../public/web.svg';
+import userIcon from '../../../public/user.svg';
 import ContactCard from '../components/ContactCard';
 
 export default function Contact() {
@@ -15,6 +16,15 @@ export default function Contact() {
       <main className="mt-56">
         <div className="mx-[8%] rounded-2xl">
           <div className="lg:grid-row-2 grid grid-cols-1 grid-rows-1 place-items-center gap-x-4 gap-y-4 lg:grid-cols-2 lg:gap-y-16">
+            <div className="lg:col-span-2">
+              <ContactCard
+                title="About Me"
+                alt="Profile Picture"
+                svg={userIcon}
+                description="A blog post that gives you an idea of my journey and my plans to continue growing."
+                link="/bog/welcome"
+              />
+            </div>
             <ContactCard
               title="Github"
               alt="Github SVG"
