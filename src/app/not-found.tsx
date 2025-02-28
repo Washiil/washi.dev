@@ -1,5 +1,5 @@
-import Navbar from './components/NavigationBar';
-import GlitchText from './components/GlitchedText';
+import Navbar from '../components/NavigationBar';
+import GlitchText from '../components/GlitchedText';
 
 export default function NotFound() {
   return (

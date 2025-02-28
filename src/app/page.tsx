@@ -1,6 +1,6 @@
 // import Image from "next/image";
 import React from 'react';
-import GlitchText from './components/GlitchedText';
+import GlitchText from '../components/GlitchedText';
 // import WireButton from "./components/WireButton";
 import Link from 'next/link';
 

@@ -1,10 +1,10 @@
-import Navbar from '../components/NavigationBar';
+import Navbar from '../../components/NavigationBar';
 import linkedinIcon from '../../../public/linkedin.svg';
 import githubIcon from '../../../public/github.svg';
 import mailIcon from '../../../public/email.svg';
 import webIcon from '../../../public/web.svg';
 import userIcon from '../../../public/user.svg';
-import ContactCard from '../components/ContactCard';
+import ContactCard from '../../components/ContactCard';
 
 export default function Contact() {
   return (

@@ -27,9 +27,9 @@ const ContactCard = ({ title, link, description, svg, alt }: ContactCardProps) =
         <div className="m-5 flex flex-col">
           <Link
             href={link}
-            className="underline-offset-4 transition-all hover:underline group-hover:text-purple-600"
+            className="underline-offset-4 transition-all underline group-hover:text-purple-600"
           >
-            <h1 className="font-mono text-4xl">{title} 🔗</h1>
+            <h1 className="font-mono text-4xl">{title}</h1>
           </Link>
           <p className="py-2 text-lg">{description}</p>
         </div>

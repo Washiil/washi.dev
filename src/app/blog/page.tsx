@@ -1,6 +1,6 @@
 import { getAllBlogs } from '@/lib/blog';
 import Link from 'next/link';
-import LaserBorderLeft from '../components/LaserBorderLeft';
+import LaserBorderLeft from '../../components/LaserBorderLeft';
 
 export default async function BlogIndex() {
   const blogs = await getAllBlogs();

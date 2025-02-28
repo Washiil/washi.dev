@@ -10,7 +10,7 @@ const withMDX = createMDX({
   options: {
     remarkPlugins: [],
     rehypePlugins: [],
-    providerImportSource: "@mdx-js/react",
+    providerImportSource: '@mdx-js/react',
     // Add this JSX option to enable component usage
     jsx: true,
   },

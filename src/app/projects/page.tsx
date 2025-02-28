@@ -4,7 +4,7 @@
 
 import { getAllProjects } from '@/lib/project';
 import { ProjectMetadata } from '@/types/project';
-import ProjectCard from '../components/ProjectCard';
+import ProjectCard from '../../components/ProjectCard';
 
 export default async function Projects() {
   // Going to add a top section with "featured" projects as specified in the metadata of the mdx files
