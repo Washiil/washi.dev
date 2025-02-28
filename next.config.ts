@@ -6,9 +6,13 @@ const nextConfig = {
 };
 
 const withMDX = createMDX({
+  extension: /\.mdx?$/,
   options: {
     remarkPlugins: [],
     rehypePlugins: [],
+    providerImportSource: "@mdx-js/react",
+    // Add this JSX option to enable component usage
+    jsx: true,
   },
 });
 
