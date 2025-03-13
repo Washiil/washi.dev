@@ -7,6 +7,7 @@ import userIcon from '../../../public/user.svg';
 import ContactCard from '../../components/ContactCard';
 
 export default function Contact() {
+  const email = process.env.NEXT_PUBLIC_EMAIL;
   return (
     // Use flex-col to stack elements vertically
     <div className="flex min-h-screen flex-col bg-gradient-to-tl from-black via-zinc-600/20 to-black">
@@ -22,7 +23,7 @@ export default function Contact() {
                 alt="Profile Picture"
                 svg={userIcon}
                 description="A blog post that gives you an idea of my journey and my plans to continue growing."
-                link="/bog/welcome"
+                link="/blog/welcome"
               />
             </div>
             <ContactCard
@@ -44,14 +45,14 @@ export default function Contact() {
               alt="Mail SVG"
               svg={mailIcon}
               description="All inquiries are welcome! I love to chat and am open for most any project!"
-              link="https://github.com/Washiil" // Replace with your email link or a mailto: link
+              link={`mailto:${email}`} // Replace with your email link or a mailto: link
             />
             <ContactCard
               title="Portfolio"
               alt="Web SVG"
               svg={webIcon}
               description="My personal portfolio which you are currently viewing! Checkout my projects page for more fun stuff!"
-              link="https://github.com/Washiil" // Replace with your portfolio link
+              link="/projects" // Replace with your portfolio link
             />
           </div>
         </div>
