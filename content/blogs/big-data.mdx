@@ -1,0 +1,74 @@
+---
+title: 'Pandas, Vectors, and Parallelism'
+description: My laptop froze, my fans screamed, and my patience wore thin. Learning Pandas on Big-Data.
+author: 'Washi'
+date: '05-06-2025'
+tags: ['python', 'pandas', 'data-science', 'optimization']
+published: true
+---
+
+# DataFrames: Not so Nice
+
+It was a classic data science rite of passage. I was handed a dataset that was, to put it mildly, BIG. My trusty `pandas.read_csv()` brought my machineto its knees. My go-to toolset felt like a toy car on a formula one racetrack. I was excited to work on this size of a dataset in a real world enviroment but intimidated just the same.
+
+Due to confidentiality and proprietary software I won't be able to get into specific details but I will do my best to outline my journey.
+
+<br />
+<br />
+I wasn't just trying to load the data; I needed to clean it, transform it, and run complex aggregations. A simple `groupby()` was taking around 2 minutes.
+
+### The Vision: From Serial to Parallel
+
+My goal was clear: I had to find a way to process this data without renting for hours or buying a supercomputer. The bottleneck was obviously pandas. By default pandas operates on a single CPU core. With my modern laptop sporting multiple cores, most of its processing power was sitting idle while one core struggled. With this idea now in mind I knew my plan and had to jump into implementation.
+
+### Going Multicore: A Paradigm Shift with Dask
+
+After some digging, I discovered a parallel computing library, **Dask**. Dask was a game-changer. It mirrors the pandas API, so the learning curve wasn't nearly as steep as I feared. Instead of one giant, DataFrame, Dask cleverly partitions the data into numerous smaller pandas DataFrames and distributes the computations across multiple cores.
+
+- **The Problem:** A simple `df.column.mean()` operation on my massive dataset would either crash or take an eternity.
+- **The Dask Solution:** Dask breaks this into smaller tasks. Each core calculates the mean for its own chunk of data. Then, in a final, lightning-fast step, it aggregates those intermediate results to get the final answer.
+
+Suddenly, operations that had previously taken 30 minutes were completing in under five. Watching my CPU usage spike across all cores was incredibly satisfying. I had successfully parallelized my workflow. But I soon discovered that more cores weren't a silver bullet for every problem.
+
+However, while this fix did work it was more of a way to kick the can down the road rather than truly improve the performance of the code itself.
+
+### Type Simplification
+
+While multicore processing drastically sped up computation, I was still hitting a memory ceiling. The sheer size of the data in RAM was a problem. Along with the overhead of spinning up additional cores and sending memory between them. Even with Dask's intelligent memory management, I was pushing my system to its limits. This led to my next key discovery: **not all data is stored efficiently.**
+
+This is where I learned about vector simplification—or more accurately, optimizing the data types of my vectors (columns). Pandas often defaults to large data types, like `int64` for numbers or a generic `object` for text, which are incredibly memory-hungry.
+
+I wrote a small utility function to analyze my DataFrame. I found columns of numbers that never exceeded 100 but were being stored as 64-bit integers. I found categorical columns, like country codes, being stored as individual strings, creating millions of redundant copies in memory.
+
+By downcasting numerical columns to more appropriate types (e.g., from `int64` to `int8` or `uint16`) and converting text columns with low cardinality to a `category` dtype, I was able to slash the DataFrame's memory footprint by over **70%**. This meant more data could fit into RAM, reducing the need for Dask to spill data to disk, which further accelerated my workflow.
+
+### Vectorization of Functions
+
+Writing python code is easy. Writing C is not as easy. However, there is a middle ground to be found by using functions in NumPy or Pandas that allow for native C code to be called instead of Pythons Lambdas.
+
+Take for example a function that operated on a `group_by` and performed a `apply(lambda x:)` this function, when run on my dataset, took around 21 minutes. This was production code that had been used to generate perdictive models and more. I was determined to speed it up.
+
+So, I took to what I know best, math. Vectorization is one of the most important concepts when woring with incredibly large data. Converting if statements to complex masks, or simplifying certain find operations by utilizing incredibly fast C functions in NumPy.
+
+After many iterations and pulling out some of my hair I was able to take the **21 minutes of runtime and slash it down to around 8 seconds**. Yes, **8 seconds**. ~150x speedup simply by using math, vectors, and matricies to solve a problem in a more abstract way/
+
+I continued to vectorize more of the codebase I was working on reducing other functions by ~60x and more. Ultimately I learned the sheer important of optimization and being intentional when writing functions in the future.
+
+### Key Libraries & Techniques: The New Toolkit
+
+<ul>
+    <li><strong>pandas:</strong> Still the foundation, but now used more intelligently.</li>
+    <li><strong>Dask:</strong> The key to unlocking multicore processing for pandas-like workflows.</li>
+    <li><strong>NumPy:</strong> Essential for understanding data types (`int8`, `float32`, etc.) and their boundaries.</li>
+    <li><strong>Memory Optimization:</strong> The practice of using `df.astype()` to downcast numerical types and convert strings to categories.</li>
+</ul>
+
+### Lessons Learned and The Road Ahead
+
+This journey taught me that working with big data isn't just about writing code that works, but about writing code that performs. Understanding the underlying hardware and how your data is represented in memory is crucial.
+
+- **Future Steps:** The next logical step is to explore even more performant DataFrame libraries like **Polars**, which is built in Rust and designed for parallelism from the ground up. For truly massive datasets, exploring GPU acceleration with libraries like **cuDF** is also on my radar.
+
+### Conclusion
+
+Tackling that first massive dataset was a humbling yet empowering experience. It forced me to look beyond the basic pandas API and dive into the worlds of parallel processing and memory optimization. By combining
